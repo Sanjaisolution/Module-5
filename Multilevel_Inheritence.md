@@ -1,55 +1,64 @@
-# Multilevel Inheritance Example in Python
+# Arithmetic Operations Using Multiple Inheritance in Python
 
-This Python project demonstrates the concept of **Multilevel Inheritance** to collect and display the **name**, **age**, and **location** of a person.
+This Python program demonstrates **multiple inheritance** by performing basic arithmetic operations — Addition, Subtraction, and Division — using three classes.
 
 ## 🎯 Aim
 
-To write a Python program that uses multilevel inheritance to get and display a person’s name, age, and location.
+To write a Python program to calculate **Add, Sub & Division** using **Multiple Inheritance**.
 
 ## 🧠 Algorithm
 
-1. **Parent Class**  
-   - `__init__(name)` initializes the `name` attribute.  
-   - `getName()` returns the `name`.
+1. **Define `Calculation1` class**
+   - Contains `Summation(a, b)` method to return the sum of two numbers.
+2. **Define `Calculation2` class**
+   - Contains `Subtraction(a, b)` method to return the difference of two numbers.
+3. **Define `Derived` class**
+   - Inherits from both `Calculation1` and `Calculation2`.
+   - Contains `Division(a, b)` method to return the division result.
+4. **Input**
+   - Prompt the user to enter two numbers.
+5. **Process**
+   - Create an object of the `Derived` class.
+   - Call `Summation`, `Subtraction`, and `Division` methods.
+6. **Output**
+   - Display the results of the three operations.
 
-2. **Child Class (inherits Parent)**  
-   - `__init__(name, age)` initializes `name` using `super()` and adds `age`.  
-   - `getAge()` returns the `age`.
-
-3. **Grandchild Class (inherits Child)**  
-   - `__init__(name, age, location)` initializes `name` and `age` using `super()` and adds `location`.  
-   - `getLocation()` returns the `location`.
-
-4. **Input & Output**  
-   - Take user input for name, age, and location.  
-   - Create an instance of `Grandchild`.  
-   - Print all details using class methods.
-
-## Program
+## 💻 Program 
 ```
-class Grandchild(Child):
-    def __init__(self, name, age, location):
-        super().__init__(name, age)
-        self.location = location
-
-    def getLocation(self):
-        return self.location
+# Class 1
+class Calculation1:
+    def Summation(self, a, b):
+        return a + b
 
 
-# User input
-name = input("Enter name: ")
-age = int(input("Enter age: "))
-location = input("Enter location: ")
+# Class 2
+class Calculation2:
+    def Subtraction(self, a, b):
+        return a - b
 
-# Create object
-obj = Grandchild(name, age, location)
 
-# Display output
-print("\n--- Person Details ---")
-print("Name:", obj.getName())
-print("Age:", obj.getAge())
-print("Location:", obj.getLocation())
+# Derived class (Multiple Inheritance)
+class Derived(Calculation1, Calculation2):
+    def Division(self, a, b):
+        if b != 0:
+            return a / b
+        else:
+            return "Division by zero not allowed"
+
+
+# Input
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+# Object creation
+obj = Derived()
+
+# Output
+print("\n--- Results ---")
+print("Addition:", obj.Summation(a, b))
+print("Subtraction:", obj.Subtraction(a, b))
+print("Division:", obj.Division(a, b))
 ```
 
-## Sample Output
-<img width="580" height="496" alt="image" src="https://github.com/user-attachments/assets/896977df-69be-43b7-9eee-f37d4bee9ade" />
+## Output Example
+<img width="606" height="438" alt="image" src="https://github.com/user-attachments/assets/ae268800-befd-4261-be0d-9edd4d73622f" />
